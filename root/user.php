@@ -9,7 +9,7 @@ class User{
 
     public function __construct() {
         if(isset($_SESSION['user'])){
-            $db = new DB();
+            global $db;
             $res = $db->query("SELECT * FROM users WHERE id=".$_SESSION['user'] );
             if(count($res) == 1){
                 $this->logged   = true;
@@ -31,4 +31,6 @@ class User{
         return $this->login;
     }
 }
+
+$user   = new User();
 
